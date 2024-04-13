@@ -5,6 +5,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.planets.demo.data.local.PlanetEntity
 import com.planets.demo.data.remote.PlanetsDto
+import com.planets.demo.domain.Planet
 import java.io.UnsupportedEncodingException
 
 fun PlanetsDto.toPlanetEntity(): PlanetEntity {
@@ -43,6 +44,23 @@ private fun extractIdFromUrl(url: String): Int {
     val matchResult = urlIdRegex.find(url)
     return matchResult?.value?.toIntOrNull()
         ?: 1 // Assumption id is never null. As per REST principle
+}
+
+fun PlanetEntity.toPlanet(): Planet {
+    return Planet(
+        id = id,
+        name = name,
+        rotationPeriod = rotationPeriod,
+        orbitalPeriod = orbitalPeriod,
+        diameter = diameter,
+        climate = climate,
+        gravity = gravity,
+        terrain = terrain,
+        surfaceWater = surfaceWater,
+        population = population,
+        films = films,
+        residents = residents
+    )
 }
 
 class Converters {
