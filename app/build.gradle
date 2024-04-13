@@ -17,13 +17,17 @@ android {
         versionCode 1
         versionName "1.0"
 
+        testInstrumentationRunner "com.planets.demo.presentation.HiltTestRunner"
 
         vectorDrawables {
             useSupportLibrary true
         }
         testOptions {
             unitTests.includeAndroidResources = true
-             }
+            unitTests.all {
+                systemProperty 'org.robolectric.property.com.planets.demo', android.defaultConfig.applicationId
+            }
+        }
     }
 
     buildTypes {
@@ -66,6 +70,9 @@ dependencies {
     implementation 'androidx.hilt:hilt-navigation-compose:1.2.0'
     implementation 'androidx.test:runner:1.5.2'
 
+    // Robolectric
+    testImplementation 'org.robolectric:robolectric:4.12.1'
+
     implementation "androidx.lifecycle:lifecycle-runtime-compose:2.7.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0"
 
@@ -89,5 +96,35 @@ dependencies {
     implementation "androidx.room:room-ktx:2.6.1"
     kapt "androidx.room:room-compiler:2.6.1"
     implementation "androidx.room:room-paging:2.6.1"
+
+    // JUnit
+    testImplementation 'junit:junit:4.13.2'
+    // Required for Hilt
+    testImplementation 'com.google.dagger:hilt-android-testing:2.44' // Use the latest version
+    kaptTest 'com.google.dagger:hilt-android-compiler:2.44' // Use the latest version
+
+    // For instrumented test
+    androidTestImplementation 'com.google.dagger:hilt-android-testing:2.44' // Use the latest version
+    kaptAndroidTest 'com.google.dagger:hilt-android-compiler:2.44' // Use the latest version
+    // compose testing
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_ui_version"
+
+    // MockK
+    testImplementation "io.mockk:mockk:1.12.0"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1"
+
+    // Mockito Kotlin for mocking dependencies
+    testImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0'
+
+    // Coroutine test dependencies for testing coroutines
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1'
+
+    // AndroidX Test dependencies
+    testImplementation 'androidx.test:core:1.5.0'
+    testImplementation 'androidx.arch.core:core-testing:2.2.0'
+
+    // AndroidX Test Rules (optional, if you want to use AndroidX Test rules)
+    testImplementation 'androidx.test:rules:1.5.0'
+
 
 }
