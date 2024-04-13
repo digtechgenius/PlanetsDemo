@@ -124,7 +124,7 @@ dependencies {
     testImplementation 'androidx.test:core:1.5.0'
     testImplementation 'androidx.arch.core:core-testing:2.2.0'
 
-    // AndroidX Test Rules (optional, if you want to use AndroidX Test rules)
+    // AndroidX Test Rules
     testImplementation 'androidx.test:rules:1.5.0'
 
 

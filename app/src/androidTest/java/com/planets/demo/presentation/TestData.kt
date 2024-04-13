@@ -114,7 +114,6 @@ object TestData {
     )
 
     // Mocked data
-    val planetId = "1"
     val planetEntity = PlanetEntity(
         id = 1,
         name = "Tatooine",

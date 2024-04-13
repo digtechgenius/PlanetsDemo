@@ -12,7 +12,6 @@ import androidx.compose.ui.unit.dp
 import com.planets.demo.domain.Planet
 
 private const val MISSING_VALUE = "Unknown"
-
 @Composable
 fun PlanetDetail(planetDetails: Planet) {
     LazyColumn(
