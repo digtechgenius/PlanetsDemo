@@ -1,29 +1,30 @@
 package com.planets.demo.data.remote
-
-import com.google.gson.annotations.Expose
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 import java.io.Serializable
 
+@JsonClass(generateAdapter = true)
 data class PlanetsResponse(
-    @Expose @SerializedName("count") val count: Int? = null,
-    @Expose @SerializedName("next") val next: String? = null,
-    @Expose @SerializedName("previous") val previous: String? = null,
-    @Expose @SerializedName("results") val planetsList: ArrayList<PlanetsDto> = arrayListOf()
+    @Json(name = "count") val count: Int? = null,
+    @Json(name = "next") val next: String? = null,
+    @Json(name = "previous") val previous: String? = null,
+    @Json(name = "results") val planetsList: List<PlanetsDto>? = null
 ) : Serializable
 
+@JsonClass(generateAdapter = true)
 data class PlanetsDto(
-    @SerializedName("name") @Expose val name: String? = null,
-    @SerializedName("rotation_period") @Expose val rotationPeriod: String? = null,
-    @SerializedName("orbital_period") @Expose val orbitalPeriod: String? = null,
-    @SerializedName("diameter") @Expose val diameter: String? = null,
-    @SerializedName("climate") @Expose val climate: String? = null,
-    @SerializedName("gravity") @Expose val gravity: String? = null,
-    @SerializedName("terrain") @Expose val terrain: String? = null,
-    @SerializedName("surface_water") @Expose val surfaceWater: String? = null,
-    @SerializedName("population") @Expose val population: String? = null,
-    @SerializedName("residents") @Expose val residents: ArrayList<String>? = null,
-    @SerializedName("films") @Expose val films: ArrayList<String>? = null,
-    @SerializedName("created") @Expose val created: String? = null,
-    @SerializedName("edited") @Expose val edited: String? = null,
-    @SerializedName("url") @Expose val url: String? = null
+    @Json(name = "name") val name: String? = null,
+    @Json(name = "rotation_period") val rotationPeriod: String? = null,
+    @Json(name = "orbital_period") val orbitalPeriod: String? = null,
+    @Json(name = "diameter") val diameter: String? = null,
+    @Json(name = "climate") val climate: String? = null,
+    @Json(name = "gravity") val gravity: String? = null,
+    @Json(name = "terrain") val terrain: String? = null,
+    @Json(name = "surface_water") val surfaceWater: String? = null,
+    @Json(name = "population") val population: String? = null,
+    @Json(name = "residents") val residents: List<String>? = null,
+    @Json(name = "films") val films: List<String>? = null,
+    @Json(name = "created") val created: String? = null,
+    @Json(name = "edited") val edited: String? = null,
+    @Json(name = "url") val url: String? = null
 ) : Serializable
